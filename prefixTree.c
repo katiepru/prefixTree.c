@@ -24,13 +24,39 @@ int main(int argc, char *argv[])
 	return 0;
 }
 
-struct TrieNode create_tree(FILE *file)
+struct TrieNode *create_tree(FILE *file)
 {
-	struct TrieNode *root = create_trienode(' ', NULL, NULL);
+	struct TrieNode *root = create_trienode(' ', NULL);
 	struct TrieNode *ptr = root;
 	char *word = calloc(4000, sizeof(char));
 	int character;
 	int buffer;
+}
 
+struct TrieNode *create_trienode(char c, struct TrieNode *parent)
+{
+	struct TrieNode *node = malloc(sizeof(struct TrieNode));
+	node->c = c;
+	node->parent = parent;
+	node->children = malloc(26*sizeof(struct TrieNode));
+	return node;
+}
 
+void destroy_trienode(struct TrieNode *node)
+{
+	int i;
+	
+	if(node==NULL) 
+	{
+		return;
+	}
+	
+	for(i=0; i<26; i++)
+	{
+		destroy_trienode(node->children[i]);
+	}
+
+	free(node->children);
+	free(node);
+	return;
 }

@@ -9,8 +9,8 @@
 
 char *strdup(const char *str);
 
-struct TrieNode create_tree(FILE *file);
-struct TrieNode create_trienode(char c, struct TrieNode parent);
+struct TrieNode *create_tree(FILE *file);
+struct TrieNode *create_trienode(char c, struct TrieNode *parent);
 
 void destroy_trienode(struct TrieNode *node);
 
@@ -20,7 +20,7 @@ typedef struct TrieNode
 {
 	char c;
 	struct TrieNode *parent;
-	struct TrieNode *children[26];
+	struct TrieNode **children;
 } TrieNode;
 
 typedef enum {false, true} bool;
