@@ -33,7 +33,6 @@ struct TrieNode *create_tree(FILE *file)
 	int character;
 	int converted;
 	int buffer;
-	int i;
 
 	/*This handles if file does not end with a newline*/
 	character = fgetc(file);
