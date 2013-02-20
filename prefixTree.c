@@ -21,6 +21,8 @@ int main(int argc, char *argv[])
 
 	root = create_tree(file);
 
+	destroy_trienode(root);
+
 	return 0;
 }
 
