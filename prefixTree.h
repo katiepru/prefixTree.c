@@ -16,11 +16,13 @@ void destroy_trienode(struct TrieNode *node);
 
 #endif
 
+typedef enum {false, true} bool;
+
 typedef struct TrieNode
 {
 	char c;
 	struct TrieNode *parent;
 	struct TrieNode **children;
+	bool is_word;
 } TrieNode;
 
-typedef enum {false, true} bool;
